@@ -1,1 +1,9 @@
-<p>roman-to-decimal-converter works!</p>
+<div>
+    <h2>Convertir números romanos a decimales</h2>
+    <input [(ngModel)]="roman" placeholder="Introduzca el número romano" />
+    <button (click)="convertRomanToDecimal()">Enviar</button>
+
+    <div *ngIf="decimal !== null">
+        <p>Decimal: {{ decimal }}</p>
+    </div>
+</div>

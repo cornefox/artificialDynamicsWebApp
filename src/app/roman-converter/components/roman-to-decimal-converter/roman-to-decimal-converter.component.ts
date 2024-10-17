@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RomanConverterService } from '../../services/roman-converter.service';
 
 @Component({
     selector: 'app-roman-to-decimal-converter',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class RomanToDecimalConverterComponent {
 
+    public roman: string = '';
+    public decimal: number | null = null;
+
+    constructor(
+        private romanConverterService: RomanConverterService
+    ) { }
+
+    public convertRomanToDecimal(): void {
+        this.decimal = this.romanConverterService.convert(this.roman);
+    }
 }
