@@ -12,7 +12,24 @@
         </div>
     </div>
 
-    <div *ngIf="decimal !== null" class="alert alert-success mt-4">
-        <p class="mb-0">Decimal: {{ decimal }}</p>
+    <!-- Mostrar los números romanos en columnas de tres -->
+    <div class="row" *ngIf="romanArray.length > 0">
+        <ng-container *ngFor="let symbol of romanArray; let i = index">
+            <!-- Iniciar nueva fila cada 3 elementos -->
+            <div class="col-4 mb-3">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Número Romano</h5>
+                        <p class="card-text fw-bold">{{ symbol.roman }}</p>
+                        <hr />
+                        <h6 class="card-subtitle text-muted">Valor Decimal</h6>
+                        <p class="card-text">{{ symbol.decimal }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Al final de cada 3 columnas, se termina la fila y comienza una nueva -->
+            <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+        </ng-container>
     </div>
 </div>
