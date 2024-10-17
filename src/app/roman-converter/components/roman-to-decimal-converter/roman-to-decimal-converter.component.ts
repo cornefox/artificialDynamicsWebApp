@@ -18,4 +18,11 @@ export class RomanToDecimalConverterComponent {
     public convertRomanToDecimal(): void {
         this.decimal = this.romanConverterService.convert(this.roman);
     }
+
+    public validateWriting(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        input.value = input.value = input.value.toUpperCase().replace(/[^IVXLCDM]/g, '');
+        this.roman = input.value;
+    }
+
 }

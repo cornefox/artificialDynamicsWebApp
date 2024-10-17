@@ -22,8 +22,6 @@ export class RomanConverterService {
     public convert(roman: string): number {
         if (!roman) return 0;
 
-        roman = roman.toUpperCase();
-
         let decimal = 0;
 
         for (let i = 0; i < roman.length; i++) {
