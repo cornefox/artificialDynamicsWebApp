@@ -1,9 +1,18 @@
-<div>
-    <h2>Convertir números romanos a decimales</h2>
-    <input [(ngModel)]="roman" placeholder="Introduzca el número romano" />
-    <button (click)="convertRomanToDecimal()">Enviar</button>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Convertir números romanos a decimales</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input [(ngModel)]="roman" placeholder="Introduzca el número romano" class="form-control"
+                    aria-label="Número romano" />
+                <button class="btn btn-primary" (click)="convertRomanToDecimal()">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <div *ngIf="decimal !== null">
-        <p>Decimal: {{ decimal }}</p>
+    <div *ngIf="decimal !== null" class="alert alert-success mt-4">
+        <p class="mb-0">Decimal: {{ decimal }}</p>
     </div>
 </div>

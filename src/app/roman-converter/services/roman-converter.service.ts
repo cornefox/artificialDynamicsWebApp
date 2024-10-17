@@ -20,13 +20,17 @@ export class RomanConverterService {
     ];
 
     public convert(roman: string): number {
+        if (!roman) return 0;
+
+        roman = roman.toUpperCase();
 
         let decimal = 0;
 
         for (let i = 0; i < roman.length; i++) {
-
             let current = this.getRomanValue(roman[i]);
-            let next = this.getRomanValue(roman[i + 1]);
+
+            // Manejo del índice para el siguiente símbolo
+            let next = (i + 1 < roman.length) ? this.getRomanValue(roman[i + 1]) : 0;
 
             // suma o resta dependiendo del valor del siguiente símbolo
             if (current < next) {
@@ -40,13 +44,13 @@ export class RomanConverterService {
     }
 
     private getRomanValue(symbol: string): number {
-        // Buscar el valor correspondiente al símbolo romano
-        const numeral = this.romanNumerals.find(n => n.symbol === symbol);
 
-        // Si no se encuentra el símbolo, lanzar un error en consola
+        const numeral = this.romanNumerals.find(n => n.symbol === symbol);
+        // console.log(`Buscando símbolo: ${symbol}, encontrado:`, numeral);
+
         if (!numeral) {
             throw new Error(`Símbolo romano no válido: ${symbol}`);
-        }
+        };
 
         return numeral.value;
     }
