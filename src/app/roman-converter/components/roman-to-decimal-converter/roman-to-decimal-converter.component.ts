@@ -19,7 +19,7 @@ export class RomanToDecimalConverterComponent {
     public romanArray: RomanDecimal[] = [];
 
     constructor(
-        private romanConverterService: RomanConverterService
+        private romanConverterService: RomanConverterService,
     ) { }
 
     public convertRomanToDecimal(): void {

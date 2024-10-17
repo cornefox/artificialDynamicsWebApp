@@ -1,5 +1,6 @@
 /* -------- libs -------- */
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 /* -------- interfaces -------- */
 import { RomanNumeral } from 'src/app/models/roman-conversion.model';
@@ -8,6 +9,10 @@ import { RomanNumeral } from 'src/app/models/roman-conversion.model';
     providedIn: 'root'
 })
 export class RomanConverterService {
+
+    constructor(
+        private toastr: ToastrService
+    ) { }
 
     private romanNumerals: RomanNumeral[] = [
         { symbol: 'I', value: 1 },
@@ -20,7 +25,6 @@ export class RomanConverterService {
     ];
 
     public convert(roman: string): number {
-        if (!roman) return 0;
 
         let decimal = 0;
 
@@ -36,7 +40,11 @@ export class RomanConverterService {
             } else {
                 decimal += current;
             };
-        }
+        };
+
+        if (decimal > 0) {
+            this.showSuccess();
+        };
 
         return decimal;
     }
@@ -47,10 +55,25 @@ export class RomanConverterService {
         // console.log(`Buscando símbolo: ${symbol}, encontrado:`, numeral);
 
         if (!numeral) {
+            this.showError();
             throw new Error(`Símbolo romano no válido: ${symbol}`);
         };
 
         return numeral.value;
+    }
+
+    private showSuccess() {
+        this.toastr.success('¡Conversión exitosa!', 'Éxito', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right'
+        });
+    }
+
+    private showError() {
+        this.toastr.error('Error al convertir el número romano.', 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-top-right'
+        });
     }
 
 }
