@@ -8,10 +8,14 @@ import { ToastrModule } from 'ngx-toastr';
 /* -------- components -------- */
 import { RomanToDecimalConverterComponent } from './components/roman-to-decimal-converter/roman-to-decimal-converter.component';
 
+/* -------- pipes -------- */
+import { RomanCorrectionPipe } from '../pipes/roman-correction.pipe';
+
 
 @NgModule({
     declarations: [
-        RomanToDecimalConverterComponent
+        RomanToDecimalConverterComponent,
+        RomanCorrectionPipe
     ],
     imports: [
         CommonModule,

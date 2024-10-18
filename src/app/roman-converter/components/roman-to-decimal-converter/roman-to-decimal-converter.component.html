@@ -3,8 +3,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="input-group mb-3">
-                <input type="text" [(ngModel)]="roman" placeholder="Introduzca el número romano" class="form-control"
-                    aria-label="Número romano" (input)="validateWriting($event)" />
+                <input type="text" [(ngModel)]="roman" maxlength="10" placeholder="Introduzca el número romano"
+                    class="form-control" aria-label="Número romano" (input)="validateWriting($event)" />
                 <button class="btn btn-primary" (click)="convertRomanToDecimal()" [disabled]="roman.length === 0">
                     Enviar
                 </button>
@@ -20,7 +20,7 @@
                 <div class="card text-center shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title text-primary">Número Romano</h5>
-                        <p class="card-text fw-bold">{{ symbol.roman }}</p>
+                        <p class="card-text fw-bold">{{ symbol.roman | romanCorrection }}</p>
                         <hr />
                         <h6 class="card-subtitle text-muted">Valor Decimal</h6>
                         <p class="card-text">{{ symbol.decimal }}</p>
